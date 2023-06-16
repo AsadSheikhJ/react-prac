@@ -3,38 +3,35 @@ import './App.css';
 
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      name : {firstName :'Asad',lastName:'Sheikh'}
+      monsters: []
     }
   }
-  render(){
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((response) => response.json())
+      .then((users) => this.setState(() => {
+        return { monsters: users }
+      },
+        console.log(this.state)
+      ));
+  }
+
+  render() {
     return (
-        <div className="App">
-          <header className="App-header">
-            <p>
-              Hi {this.state.name.firstName} {this.setState.name.lastName}, testing function value.
-            </p>
-            <button onClick={() =>{
-              this.setState({
-                name:{firstName:'Usama',lastName:'Sheikh'},
-              },
-              console.log(this.state)
-                );
-            }}>Change Name</button>
-            {/* <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a> */}
-          </header>
-        </div>
-      );
-    }
+      <div className="App">
+        <input className='searh-box' type='search' placeholder='searh monsters' onChange={(event) => {
+          console.log(event.target.value);
+        }} />
+        {this.state.monsters.map((monster) => {
+          return <p key={monster.id}>{monster.name}</p>;
+        })}
+      </div>
+    );
   }
+}
 export default App;
