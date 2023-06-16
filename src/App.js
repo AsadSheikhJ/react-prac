@@ -7,7 +7,8 @@ class App extends Component {
     super();
 
     this.state = {
-      monsters: []
+      monsters: [],
+      searhField: ''
     }
   }
 
@@ -22,12 +23,26 @@ class App extends Component {
   }
 
   render() {
+
+    const filteredMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLowerCase().includes(this.state.searhField);
+    });
+
     return (
       <div className="App">
-        <input className='searh-box' type='search' placeholder='searh monsters' onChange={(event) => {
-          console.log(event.target.value);
-        }} />
-        {this.state.monsters.map((monster) => {
+        <input
+          className='searh-box'
+          type='search'
+          placeholder='searh monsters'
+          onChange={(event) => {
+            console.log(event.target.value);
+            const searhField = event.target.value.toLowerCase();
+
+            this.setState(() => {
+              return { searhField }
+            });
+          }} />
+        {filteredMonsters.map((monster) => {
           return <p key={monster.id}>{monster.name}</p>;
         })}
       </div>
