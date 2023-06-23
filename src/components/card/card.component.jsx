@@ -3,13 +3,13 @@ import './card.style.css';
 
 class Card extends Component {
   render() {
-    const { name, id, email } = this.props.monster;
+    const { id, name, email } = this.props.monster;
+    const { monsID } = this.props.monsterID;
     return (
-      <div className='card-container' key={id}>
+      <div className='card-container' key={`${id}`} id={`${id}`}>
         <img
-          // src={`https://robohash.org/${id}?set=set2&size=180x180`}
-          src={`https://robohasf.org/${id}?set=set3&size=50x50`}
           alt={`monster ${name}`}
+          src={`https://robohasf.org/${id}?set=set3&size=50x50`}
         />
         <h2>{name}</h2>
         <p>{email}</p>
