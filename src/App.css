@@ -8,17 +8,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(
     to left,
-    rgb(43, 39, 39) 0%,
-    rgb(20, 17, 17) 100%
+    rgb(56, 143, 158) 0%,
+    rgb(17, 106, 141) 100%
   );
   text-align: center;
-  color: white;
+  color: rgb(61, 59, 59);
 }
 
 .app-title{
-  margin-top: 75px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 76px;
-  color: #0ccac4;
+  color: #e2e2e2;
   font-family: 'Bigelow Rules', cursive;
 }
