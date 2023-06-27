@@ -6,6 +6,7 @@ import './App.css';
 
 const App = () => {
   const [searchField, setSearchField] = useState(''); // [value, setValue]
+  const [title, setTitle] = useState('');
   const [monsters, setMonsters] = useState([]);
   const [filteredMonsters, setfilteredMonsters] = useState(monsters);
 
@@ -30,14 +31,30 @@ const App = () => {
     setSearchField(searhFieldString);
   }
 
+  const onTitleChange = (event) => {
+    const searhFieldString = event.target.value;
+    setTitle(searhFieldString);
+  }
+
   return (
     <div className="App">
-      <h1 className='app-title'>Name Search</h1>
+      {/* <h1 className='app-title'>Name Search</h1> */}
+      <h1 className='app-title'>{title}</h1>
+
+
       <SearchBox
         className='search-box'
         onChangeHandler={onSearchChange}
         placeholder='Search Monster'
       />
+
+      <br />
+      <SearchBox
+        className='search-box title'
+        onChangeHandler={onTitleChange}
+        placeholder='Set Title'
+      />
+
       <CardList monsters={filteredMonsters} />
     </div>
   );
